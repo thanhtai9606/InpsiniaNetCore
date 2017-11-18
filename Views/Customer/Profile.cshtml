@@ -49,8 +49,8 @@
                                         <i class="fa fa-envelope"></i> Send Message</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-default btn-sm btn-block">
-                                        <i class="fa fa-coffee"></i> Buy a coffee</button>
+                                    <button type="button" class="btn btn-default btn-sm btn-block" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-coffee"></i> Upload Avatar</button>
                                 </div>
                             </div>
                         </div>
@@ -68,10 +68,7 @@
                             </li>
                             <li class="" id="emp">
                                 <a data-toggle="tab" href="#tab-2">Employee</a>
-                            </li>
-                            <li class="">
-                                <a data-toggle="tab" href="#tab-3">Avatar</a>
-                            </li>
+                            </li>                           
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
@@ -262,32 +259,90 @@
                                                 <input type="text" class="form-control" name="FirstName">
                                             </div>
                                         </div>
+                                        <div class="form-group" id="data_1">
+                                            <label class="col-sm-2 control-label">Hire: </label>
+                                            <div class="col-sm-4">
+                                                <div class="input-group date">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" value="03/04/2014">
+                                                </div>
+                                            </div>     
+                                            <label class="col-sm-2 control-label">Leave Date: </label>
+                                            <div class="col-sm-4">
+                                                <div class="input-group date">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" value="03/04/2014">
+                                                </div>
+                                            </div>        
+                                        </div>
                                     </form>
                                 </div>
-                            </div>
-                            <div id="tab-3" class="tab-pane">
-                                <div class="panel-body">
-                                    <strong>Donec quam felis</strong>
-
-                                    <p>
-                                        Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with
-                                        the countless indescribable forms of the insects and flies, then I feel the presence
-                                        of the Almighty, who formed us in his own image, and the breath
-                                    </p>
-
-                                    <p>
-                                        I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy,
-                                        my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that
-                                        I neglect my talents. I should be incapable of drawing a single stroke at the present
-                                        moment; and yet.
-                                    </p>
-                                </div>
-                            </div>
+                            </div>                           
                         </div>
 
 
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal Avatar Upload -->
+<div class="modal inmodal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Upload your Avatar</h4>
+              
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="image-crop">
+                            <img src="~/Images/p3.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Preview image</h4>
+                        <div class="img-preview img-preview-sm"></div>
+                        <h4>Comon method</h4>
+                        <p>
+                            You can upload new image to crop container and easy download new cropped image.
+                        </p>
+                        <div class="btn-group">
+                            <label title="Upload image file" for="inputImage" class="btn btn-primary">
+                                <input type="file" accept="image/*" name="file" id="inputImage" class="hide">
+                                Upload new image
+                            </label>
+                            <label title="Donload image" id="download" class="btn btn-primary">Download</label>
+                        </div>
+                        <h4>Other method</h4>
+                        <p>
+                            You may set cropper options with <code>$({image}).cropper(options)</code>
+                        </p>
+                        <div class="btn-group">
+                            <button class="btn btn-white" id="zoomIn" type="button">Zoom In</button>
+                            <button class="btn btn-white" id="zoomOut" type="button">Zoom Out</button>
+                            <button class="btn btn-white" id="rotateLeft" type="button">Rotate Left</button>
+                            <button class="btn btn-white" id="rotateRight" type="button">Rotate Right</button>
+                            <button class="btn btn-warning" id="setDrag" type="button">New crop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -298,6 +353,7 @@
     <link rel="stylesheet" href="~/lib/daterangepicker/daterangepicker-bs3.css" />
     <link rel="stylesheet" href="~/lib_bower/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
     <link rel="stylesheet" href="~/lib_bower/select2/dist/css/select2.css" />
+    <link rel="stylesheet" href="~/lib_bower/cropper/dist/cropper.min.css" />
 </environment>
 
 } 
@@ -308,6 +364,7 @@
     <script src="~/lib_bower/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="~/lib_bower/select2/dist/js/select2.min.js"></script>
     <script src="~/lib/iCheck/icheck.min.js"></script>
+    <script src="~/lib_bower/cropper/dist/cropper.min.js"></script>
    
 </environment>
  <script type="text/javascript">
@@ -315,6 +372,7 @@
         showTab('EMxs');
         showiCheckGreen();
         showCalendar();
+        showImageCropper();
     });
     function showTab(type) {
 
@@ -337,6 +395,70 @@
             calendarWeeks: true,
             autoclose: true
         });
+    }
+
+    function showImageCropper(){
+
+             var $image = $(".image-crop > img")
+            $($image).cropper({
+                aspectRatio: 1.618,
+                preview: ".img-preview",
+                done: function(data) {
+                    // Output the result data for cropping image.
+                }
+            });
+
+            var $inputImage = $("#inputImage");
+            if (window.FileReader) {
+                $inputImage.change(function() {
+                    var fileReader = new FileReader(),
+                            files = this.files,
+                            file;
+
+                    if (!files.length) {
+                        return;
+                    }
+
+                    file = files[0];
+
+                    if (/^image\/\w+$/.test(file.type)) {
+                        fileReader.readAsDataURL(file);
+                        fileReader.onload = function () {
+                            $inputImage.val("");
+                            $image.cropper("reset", true).cropper("replace", this.result);
+                        };
+                    } else {
+                        showMessage("Please choose an image file.");
+                    }
+                });
+            } else {
+                $inputImage.addClass("hide");
+            }
+
+            $("#download").click(function() {
+                window.open($image.cropper("getDataURL"));
+            });
+
+            $("#zoomIn").click(function() {
+                $image.cropper("zoom", 0.1);
+            });
+
+            $("#zoomOut").click(function() {
+                $image.cropper("zoom", -0.1);
+            });
+
+            $("#rotateLeft").click(function() {
+                $image.cropper("rotate", 45);
+            });
+
+            $("#rotateRight").click(function() {
+                $image.cropper("rotate", -45);
+            });
+
+            $("#setDrag").click(function() {
+                $image.cropper("setDragMode", "crop");
+            });
+
     }
 </script> 
 
